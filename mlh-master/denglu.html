@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/denglu.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+	    <link rel="stylesheet" type="text/css" href="css/touwei.css">
+		<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+			$(function(){
+				$('#submitBtn').click(function(){
+					//判断输入的用户信息
+					
+					if($('#userAccount').val()!="" && $('#userAccount2').val()!=""){
+						
+						//获取cookie的用户信息
+						var sCookie = $.cookie('user');
+						if(sCookie==undefined || sCookie==""){
+							//cookie为空时表示没有注册用户
+							console.log('用户没有注册');
+						}else{
+							var bRegister = false;  //表示用户没有注册
+							//将cookie转换成数组
+							var aCookie = JSON.parse(sCookie);
+							console.log(aCookie);
+							
+							//遍历数组判断输入的用户信息是否已注册
+							$.each(aCookie, function() {
+								
+								if( this.user == $('#userAccount').val() && this.psw == $('#userAccount2').val() ){
+									//已注册修改 注册状态；
+									bRegister = true;
+								}
+								
+							});
+							
+							if(bRegister){
+								//用户已注册
+								console.log("登陆成功");
+								//修改登录状态
+								window.location.href ='shouye.html';
+								var obj = {type:true,name:$('#userAccount').val()};
+							}else{
+								
+								//用户未注册
+								console.log("登陆失败");
+								var obj = {type:false};
+								alert("用户没有注册吧，还没有断奶就来欺负宝宝，好残忍！！赶紧去注册！！！！");
+								window.location.href ='denglu.html';
+							}
+							//修改cookie里面的登录状态
+							$.cookie('login',JSON.stringify(obj),{expires:7 , path:"/"});
+							console.log($.cookie('login'));
+						}
+					}
+				})
+			})
+		</script>
+	</head>
+	<body>
+	<div class="dlymz">
+		<div class="dlymt">
+			
+		</div>
+		<div class="dlymzj">
+			<div class="dlymzjlr">
+				
+				   <!--  前面两行字-->
+           
+				<div class="hydl_regsiter11" data-spm="2028696">
+                    <h2>会员登录</h2>
+                    <span class="iiiii">没有账号？<a href="zhuce.html">免费注册</a></span>
+                </div>
+              <!--  3个登录方框密码输入登录-->
+                <div class="sgfko">
+               
+                  <ul>
+                  	   <!--  登录名输入登录方框-->
+                         <li><span>账户名:</span>
+                         	<input id="userAccount" name="userAccount" type="text" value="已验证手机号/邮箱" class="input-text" onclick="zhanghu()">
+                       
+                        	<p id="Act_error" class="error"></p>
+                        </li>  
+                         <!--  登录密码输入登录方框-->
+                        <li><span>密码:</span>
+                        	<input name="passWord"  id="userAccount2" type="password" onclink="mima()" ><!--onblur="checkFormInfo('login','no','','','pwd')" maxlength="20"-->
+                        	<p id="Pwd_error"></p>
+                        	<p id="lockInfo" class="hidstyle">出于安全考虑，系统已冻结您的账户，请联系客服：<a onclick="#" title="在线咨询" class="buybtn" style="cursor:pointer;">在线咨询</a>或400-664-6698</p>
+                        </li>
+                        <div class="hydl_btn22">
+                	         <a id="submitBtn"  style="cursor: pointer;">会员登录</a>
+                        </div>
+                        
+                    
+                </ul>
+                
+                       <div class="hydl_login" data-spm="2028697">
+		                    <p><span  id="isRemenber" class="selected chengepst select" style="float:left;"></span>下次自动登录</p>
+		                    <a href="#"><span>忘记密码</span></a>
+                      </div>
+                <!--  登录下面的联名登录-->
+                   <div class="hydl_partner" data-spm="2028698">
+                                <h4>联名登录:</h4>
+			                    <a href="#" class="weibo" onclick="#"></a>
+			                	<a href="#" class="zhifubao" onclick="#"></a>
+                      </div>
+                 <!--  登录联名登录下面的东西    二维码等-->
+                 <div class="xian"></div>
+                <div class="erweima">
+                    <img src="img/imges_saomiao.jpg">
+                  <p>扫描二维码或发送短信<br>“MLH”到“12114”<br>下载APP尊享独家优惠</p>
+                </div>
+                
+                
+                
+                </div>
+			</div>
+			
+		</div>
+		
+		
+		  <!--尾巴 -->   
+	<div id="foot"></div>
+	</div>
+	</body>
+	
+	<script>
+
+		$(function(){
+//			对于文本框获取焦点的改变样式操作
+			$(".input-text").bind({
+				focus:function(){
+					if (this.value == this.defaultValue) {
+						this.value="";
+					}
+				},
+				blur:function(){
+					if (this.value == "") {
+						this.value=this.defaultValue;
+					}
+				}
+			})
+//			登录页面的登录小方格子切换
+
+			$("#isRemenber").click(function(){
+
+
+				console.log("hhhhhhhhhhh");
+				$(".selected").toggleClass('select');
+				$(".selected").toggleClass("yy");
+			});
+			
+			
+				//尾巴
+				$('#foot').load("footdl.html",function(){
+					//console.log('wangc');
+				})
+		});
+	</script>
+	
+	
+	<!--登录用户名验证-->
+	<script>
+
+	function zhanghu(){
+//	验证登录框的帐号是否正确
+	var oPhone = document.getElementById("userAccount");
+var Act_error = document.getElementById("Act_error");
+	oPhone.onblur = function(){
+		
+
+		var str = oPhone.value;
+
+		var reg = /^1[35678]\d{9}$/;
+		var reg1 = /\w+@[a-zA-Z0-9]+\.[a-zA-Z]+/;
+
+		var aa = reg.test(str);
+	  var aa1 = reg1.test(str);
+	  
+	  
+	 	
+
+		if(aa == false&&aa1 == false){
+             
+	       //console.log(str);
+			if(str==="已验证手机号/邮箱"){
+//				alert("你输入的东西是空的傻蛋");
+				Act_error.innerHTML="你输入的东西是空的傻蛋";
+			}else{
+//				alert("你输入的不是空的是错的");
+				Act_error.innerHTML="你输入的不是空的是错的";
+			}
+			alert("请输入正确的手机号码或请输入正确邮箱地址才可以作为账户名称哦么么达")
+		}else {
+			console.log("你输入的是正确的");
+			Act_error.innerHTML="你输入的东西是正确的";
+		}
+
+	       }
+		}
+		
+	</script>
+	<!--验证登录框密码是否正确-->
+	
+<script>
+
+//	验证登录框的帐号是否正确
+  var oPhone11 = document.getElementById("userAccount2");
+    var Act_error11 = document.getElementById("Pwd_error");
+	oPhone11.onblur = function(){
+		var str11 = oPhone11.value;
+
+			var reg11 = /^\w{6,20}$/;
+
+			var pass11 = reg11.test(str11);
+
+			if(pass11 == false){
+
+				alert("密码输入不对");
+				Act_error11.innerHTML="密码输入不对";
+				
+			}else{
+				alert("密码正确");
+				Act_error11.innerHTML="密码输入正确";
+			}
+
+      }
+		
+	</script>
+</html>

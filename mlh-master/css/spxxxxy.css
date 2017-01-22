@@ -1,0 +1,594 @@
+/*这里有商品详情页面中间的样式这里有他的背景色和高度,最后需要改的
+*/
+#zz{
+	width:1000px;
+	height:auto;
+	background-color:#ffffff;
+	margin: 0 auto;
+}
+
+/*第一部分已经完成*/
+#centertt1 {
+line-height: 16px;
+font-size: 14px;
+}
+#centertt1{
+	position: relative;
+	width: 1000px;
+	padding: 17px 0 19px;
+	height: 16px;
+	line-height: 16px;
+	font-size: 14px;
+}
+#centertt1 ul li {
+float: left;
+margin-right: 8px;
+color: #929292;
+}
+#centertt1 a, #centertt1 a:link{
+color: #929292;
+}
+#centertt1 a:hover{
+color: red;
+}
+#centertt1 .product {
+color: #000;
+}
+#centertt1 li {
+float: left;
+margin-right: 8px;
+color: #929292;
+}
+#centertt1 ul{
+	margin:0px;
+}
+
+
+
+/*第二部分*/
+.product-main {
+margin: 0 0 52px;
+}
+.main {
+width: 1000px;
+height: auto;
+margin-bottom: 30px;
+position: relative;
+}
+.clearfix {
+zoom: 1;
+}
+
+
+/*第二个的大图片整个div   颜色最后也要改的*/
+.product_view {
+width: 480px;
+float: left;
+margin: 0 0 0 5px;
+height: auto;
+overflow: hidden;
+background-color:#ffffff;
+}
+/*大图片*/
+.product_bigimg {
+width: 480px;
+height: 640px;
+overflow: hidden;
+position: relative;
+margin-bottom: 10px;
+}
+
+.product_bigimg img {
+width: 480px;
+height: 640px;
+}
+img, input {
+border: 0;
+vertical-align: middle;
+}
+/*下面的小图片*/
+.product_selectimg {
+width: 480px;
+height: auto;
+overflow: hidden;
+/*position: relative;*/
+}
+
+.product_smallimg ul li {
+width: 80px;
+height: 107px;
+float: left;
+margin-right: 5px;
+}
+.product_smallimg ul li .selectimg {
+display: block;
+width: 80px;
+height: 107px;
+/*overflow: hidden;*/
+/*position: relative;*/
+}
+.product_smallimg ul li .selectimg img {
+width: 80px;
+height: 107px;
+}
+img, input {
+border: 0;
+vertical-align: middle;
+}
+/*第二个的大图片旁边整个div    颜色最后也要改的*/
+.product_info {
+width: 480px;
+height: auto;
+margin-right: 5px;
+float: right;
+/*position: relative;*/
+overflow: visible;
+background-color:#ffffff;
+
+}
+/*第二个的大图片旁边整个div 下面的文字*/
+.product_title {
+	
+width: 420px;
+height: auto;
+overflow: hidden;
+font-size: 28px;
+font-weight: bold;
+line-height: 32px;
+padding: 4px 40px 0 0;
+letter-spacing: 1px;
+text-transform: uppercase;
+/*float:left;*/
+padding-right:0px;
+text-align: left;
+}
+
+
+a.product_share_weibo {
+display: block;
+height: 20px;
+padding: 0 0 0 30px;
+line-height: 20px;
+color: #929292;
+background: url(../img/share_weibo.png) 0 0 no-repeat;
+position: absolute;
+top: 10px;
+right: 0;
+}
+.product_name{
+text-align:left;
+}
+/*第二个的大图片旁边整个div 下面的文字*/
+.product_name {
+width: auto;
+padding-left: 2px;
+padding-right: 30px;
+height: auto;
+overflow: hidden;
+font-size: 16px;
+color: #929292;
+}
+.product_name h1 {
+font-size: 16px;
+font-weight: 400;
+}
+
+/*价格 总*/
+.product_price_box {
+position: relative;
+padding: 22px 0 0;
+line-height: 32px;
+}
+.clearfix {
+zoom: 1;
+}
+/*那个红色大蚊子u价格*/
+.product_price {
+width: auto;
+float: left;
+margin: 0 10px 0 0;
+overflow: hidden;
+white-space: nowrap;
+}
+.product_price .product_current_price {
+font-size: 28px;
+font-weight: bold;
+color: #dd2828;
+}
+.product_price_box span {
+float: left;
+}
+/*那个灰色大蚊子u价格*/
+.product_original_price {
+width: auto;
+float: left;
+overflow: hidden;
+white-space: nowrap;
+font-size: 18px;
+text-decoration: line-through;
+color: #999;
+}
+.product_original_price {
+white-space: nowrap;
+font-size: 18px;
+color: #999;
+}
+.product_price_box span {
+float: left;
+}
+.product_original_price {
+white-space: nowrap;
+font-size: 18px;
+color: #999;
+}
+.product_price_box {
+line-height: 32px;
+}
+/*打折信息*/
+.product_discount {
+float: right;
+color: #000;
+font-size: 24px;
+font-weight: bold;
+font-family: arial;
+}
+.product_price_box {
+line-height: 32px;
+}
+.clearfix {
+zoom: 1;
+}
+.product_price_box span {
+float: left;
+}
+.product_discount {
+color: #000;
+font-size: 24px;
+font-weight: bold;
+font-family: arial;
+}
+.product_price_box {
+line-height: 32px;
+}
+.clearfix {
+zoom: 1;
+}
+.product_discount .unit {
+font-size: 14px;
+line-height: 16px;
+font-weight: 400;
+margin: 10px 0 0;
+}
+
+
+/*海外运动活动什么的*/
+.product_info .box_effect {
+width: auto;
+padding: 10px;
+margin: 21px 0 30px;
+background: #eee;
+}
+.box_effect {
+/*width: 100%;*/
+height: auto;
+overflow: hidden;
+/*padding: 5px 0 0 5px;*/
+}
+.product_info .box_effect_content {
+width: auto;
+padding: 0;
+background: #eee;
+border: 0;
+left: 0;
+bottom: 0;
+font-size: 14px;
+font-weight: 500;
+height: auto;
+overflow: hidden;
+}
+.product_info .box_effect_content .box_effect_content_first {
+width: 310px;
+height: auto;
+padding-left: 48px;
+overflow: hidden;
+line-height: 20px;
+white-space: normal;
+background: url(../img/icon_sales11.png) 10px center no-repeat;
+}
+/*改变那个什么的样式,使得不影响下面的海外活动*/
+.product_price_box {
+/*line-height: 32px;*/
+width: 480px;
+height: 30px;
+}
+.box_effect_content_first(
+text-align:left;)
+
+.product_choose {
+width: 360px;
+height: auto;
+position: relative;
+margin: 0 0 8px;
+}
+.clearfix {
+zoom: 1;
+}
+.clearfix:after {
+content: "";
+display: block;
+clear: both;
+}
+/*文字*/
+
+.product_choose_title {
+width: 360px;
+height: 31px;
+font-size: 14px;
+font-weight: 500;
+color: #929292;
+text-align: left;
+}
+.product_choose_title strong {
+margin: 0 0 0 10px;
+color: #000;
+}
+.product_choose_color span {
+display: block;
+line-height: 17px;
+text-align: center;
+color: #1e1e1e;
+background: #eee;
+}
+.product_choose_title span {
+font-size: 12px;
+color: #db2726;
+margin-left: 12px;
+visibility:hidden;
+}
+.product_choose_color li {
+float: left;
+width: 58px;
+height: 94px;
+margin: 0 10px 10px 0;
+
+}
+
+
+
+.product_choose_color ul{
+	padding:0px;
+}
+.product_choose_color a {
+display: block;
+width: 58px;
+height: 94px;
+overflow: hidden;
+position: relative;
+}
+.product_choose_color img {
+display: block;
+width: 56px;
+height: 75px;
+border: 1px solid #eee;
+}
+.product_choose_color a:hover span, .product_choose_color .colorselected span {
+color: #fff;
+background: #000;
+}
+
+/*商品详的情列表的里面的那个数量的增加与减少*/
+.product_choose {
+width: 360px;
+height: auto;
+position: relative;
+margin: 0 0 8px;
+}
+.product_choose_title {
+width: 360px;
+height: 31px;
+font-size: 14px;
+font-weight: 500;
+color: #929292;
+}
+.product_choose .number_choose {
+width: 108px;
+height: 34px;
+border: 0;
+}
+.product_choose .number_choose .number_reduce_none{
+width: 34px;
+height: 34px;
+line-height: 34px;
+text-align: center;
+font-size: 24px;
+border-right: 0;
+background: #eee;
+text-indent: 0;
+}
+.product_choose .number_choose .quantity_number {
+width: 40px;
+height: 34px;
+padding: 0;
+}
+.product_choose .number_choose .quantity_number input {
+width: 40px;
+height: 34px;
+text-align: center;
+line-height: 34px;
+font-size: 14px;
+font-weight: 700;
+}
+ .product_choose .number_choose .number_increase {
+width: 34px;
+height: 34px;
+line-height: 34px;
+text-align: center;
+font-size: 24px;
+border-left: 0;
+background: #eee;
+text-indent: 0;
+}
+.trace_normal {
+width: auto;
+overflow: visible;
+}
+.product_trace {
+/*width: 100%;*/
+height: 30px;
+padding: 3px 0 0;
+/*overflow: hidden;*/
+color: #929292;
+font-size: 14px;
+font-weight: 500;
+}
+.trace_normal span {
+font-weight: bold;
+color: #000;
+}
+.product_info{
+	text-align:left;
+}
+/*加入购物车按钮*/
+.product_button .join_shopping_bag {
+display: block;
+width: 230px;
+height: 42px;
+text-align: center;
+line-height: 42px;
+font-size: 14px;
+background-color: #de2827;
+color: #fff;
+float: left;
+}
+.join_shopping_bag span {
+display: inline-block;
+padding: 0 0 0 33px;
+line-height: 42px;
+font-size: 16px;
+font-weight: bold;
+background: url(../img/icon_buyiiii.png) 0 center no-repeat;
+}
+/
+/*加入购物车后面的按钮
+*/
+.countdown {
+padding: 50px 0 14px;
+}
+.clearfix {
+zoom: 1;
+}
+.countdown_label {
+padding: 8px 0;
+font-weight: bold;
+float: left;
+margin-right: 3px;
+color: #929292;
+}
+.countdown_Time {
+color: #999;
+float: left;
+padding: 3px 0 0;
+}
+.countdown_label strong {
+display: block;
+font-size: 14px;
+color: #000;
+}
+.countdown_label em {
+font-style: normal;
+font-weight: 500;
+letter-spacing: 3px;
+}
+.countdown_Time strong {
+margin: 0 5px;
+padding: 4px 2px;
+display: inline-block;
+vertical-align: top;
+border: 1px solid #ccc;
+position: relative;
+}
+.countdown_Time span {
+display: inline-block;
+vertical-align: top;
+line-height: 48px;
+}
+.countdown_Time em {
+font-size: 32px;
+font-family: Helvetica,'Microsoft YaHei',Tahoma,Arial,sans-serif;
+color: #000;
+font-style: normal;
+}
+.product_button{
+overflow:hidden ;
+clear:both;	
+}
+
+/*限时抢购后面*/
+.p_d_after_sale {
+padding: 34px 0 0;
+font-size: 14px;
+font-weight: 500;
+}
+.p_d_after_sale span {
+height: 20px;
+display: inline-block;
+padding: 0 13px 0 26px;
+line-height: 20px;
+}
+.real100 {
+background: url(../img/icon_real100ii.png) 0 center no-repeat;
+}
+
+.rma7days {
+background: url(../img/icon_7daysrmaiii.png) 0 center no-repeat;
+}
+.countdown {
+padding: 50px 0 14px;
+}
+.product_button{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.product-main {
+margin: 0 0 100px;
+}
+/*解决小方块的大小问他*/
+.product_choose .number_choose .number_reduce_none{
+width: 34px;
+height: 34px;
+line-height: 34px;
+text-align: center;
+font-size: 24px;
+border-right: 0;
+background: #eee;
+text-indent: 0;
+}
+/*中间部分已经完成*/
+/*大于小于号的设置*/
+.bigimg_prev {
+background: url(../img/bigimg_previi.png) 0 0 no-repeat;
+left: 10px;
+}
+.bigimg_prev, .bigimg_next {
+width: 23px;
+height: 42px;
+float: left;
+text-indent: -1000em;
+position: absolute;
+top: 300px;
+}
+a {
+cursor: pointer;
+}
+.bigimg_next {
+background: url(../img/bigimg_next111.png) 0 0 no-repeat;
+right: 10px;
+}
+.bigimg_prev, .bigimg_next {
+width: 23px;
+height: 42px;
+float: left;
+text-indent: -1000em;
+position: absolute;
+top: 300px;
+}

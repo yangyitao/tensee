@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品的详细信息页</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/touwei.css">
+		<link rel="stylesheet" type="text/css" href="css/spxxxxy.css">
+		<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<!--	引入头尾文件-->
+		<script>
+			$(function() {
+				$("#tt").load("heard.html", function() {
+						//console.log('wangc');
+					})
+					//  			$("#zz").load("spxqcenter.html",function(){
+					//					//console.log('wangc');
+					//				})
+				$("#ww").load("foot.html", function() {
+					//console.log('wangc');
+				});
+
+			});
+		</script>
+
+		<!--ajax-->
+		<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//			var jsonstr = '{"data":[{"name":"jjk"},{"name":"jjk2"}]}';
+			//			
+			//			console.log( JSON.parse(jsonstr) );
+
+			$(function() {
+
+				$.ajax({
+						type: "get",
+						url: "json/good1.json",
+						success: function(res) {
+							//						console.log(res);
+							//						console.log(typeof res);
+							//						console.log(res.data[0].img);
+							console.log(res);
+							update(res);
+
+						}
+					})
+					//刷新界面
+					var ppp;
+				function update(data) {
+					data = data.data;
+					var index = location.search.replace('?',''); //图片的位置
+						
+						index = parseInt(index);
+		//				console.log(this[code].img7);
+						//插入大图片
+						var imgSRC = data[index].img1;
+						var  imgSRC11=data[index].img4;
+						var  imgSRC12=data[index].img5;
+						var  imgSRC13=data[index].img6;
+						var  imgSRC14=data[index].img5;
+						var  imgSRC15=data[index].img4;
+						//var imgSRC1 = $("#bigimg").attr('src');
+						$("#bigimg").attr('src', imgSRC);
+						
+						//改变他的4个小图片
+						//gwctp11  xxxtpyss
+						$(".gwctp11").attr('src', imgSRC11);
+						$(".gwctp12").attr('src', imgSRC12);
+						$(".gwctp13").attr('src', imgSRC13);
+						$(".gwctp14").attr('src', imgSRC14);
+						$(".xxxtpyss").attr('src', imgSRC15);
+                         //改变他的价格
+                         console.log(data[index].price1);
+                         ppp=data[index].price1;
+                         var price=data[index].price1;
+                         $(".product_current_price").html(price);
+                         
+                         //改变他的商品种类
+                         var zhonglei=data[index].title;
+                         $(".product_title").html(zhonglei);
+						//收起的地方
+						
+						
+					//   console.log(this[code].img7);
+					$('.product_button').on('click', 'a', function(e) {
+						//把产品信息存在cookie里面
+                   console.log("你点击了要购买的图片哦");
+						//获取title
+						var title =  $(".product_title").html();
+						//						 console.log(title);
+						//price 1为实际价格   一般情况下我们留实际价格就好了
+						//var price =  $(".product_current_price").html();
+						console.log(ppp);
+						//img
+						var img = $("#bigimg").attr('src');
+						console.log(img);
+						//新的产品信息
+						var obj = {
+							"title": title,
+							"price": ppp,//价格已经在上面保存
+							"img": img
+						};
+						console.log(ppp);
+						//						 
+						var strCookie = $.cookie("good"); //strCookie 是存在cookie里面的产品信息
+
+						//						
+						//						//oCookie保存了所有的产品信息
+
+						//对返回的cookie 进行判断 如果为空 
+
+						var bGood = false; //代表没有信息
+						if (strCookie == undefined || strCookie == "") {
+
+							//如果完成没有产品信息
+							var oCookie = [];
+							var newGood = {
+									"title": title,
+									"price": price,
+									data: obj,
+									num: 1
+								} //新的完整的产品信息
+							oCookie.push(newGood);
+
+						} else {
+							var oCookie = JSON.parse(strCookie);
+							//[{title:商品名称,data:{title:title,price:price,img:url},num:购买的数量},{}]
+							//目的 查找商品是否已经有购买信息
+							//如果有购买信息 num+1
+							//没有 生成一个新的产品信息
+
+							$.each(oCookie, function() {
+								//如果在cookie里面能够找到产品信息  
+								//对数量+1 num+1
+								if (this.title == title) {
+									var num = parseInt(this.num) + 1; //为了防止num是字符串 讲字符串转换成int
+									this.num = num;
+									bGood = true; //表示产品有信息
+								}
+							})
+
+							//cookie存在产品信息 但是没有当前购买的产品的信息
+							if (bGood == false) {
+								//生成新的商品信息
+								var newGood = {
+										"title": title,
+										"price":ppp,
+										data: obj,
+										num: 1
+									} //新的完整的产品信息
+								oCookie.push(newGood);
+							}
+						}
+						//							//生成新的商品信息					
+						//						//重新设置cookie
+						$.cookie("good", JSON.stringify(oCookie), {
+							expires: 7,
+							path: "/"
+						});
+						//						
+						console.log($.cookie("good"));
+
+						//json
+					})
+				}
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="tt"></div>
+		<div id="zz">
+			<!--中间的第一部分-->
+			<div id="centertt1">
+				<ul data-spm="2039254">
+					<li><a href="shouye.html">首页</a></li>
+					<li id="silo"><span>&gt;</span><a href="shangpingxiangqingns.html">
+    		男士
+		</a></li>
+					<li id="event"><span>&gt;</span><a href="#">
+    		秋之帅气
+		</a></li>
+					<li id="product" class="product"><span>/</span>双十一敢买就送女朋友一枚
+					</li>
+				</ul>
+			</div>
+
+			<!--中间的第二部分-->
+			<div class="main product-main clearfix">
+				<!--	大图片那边-->
+				<div class="product_view">
+					<div class="product_bigimg">
+						<div class="slide-item" id="videoPlayer" data-status="play">
+							<div class="mark"></div>
+							<img id="bigimg" src="img/TWT-444-00001a.jpg" title="敢买敢送" data-index="0" style="width:480px;height:640px;">
+						</div>
+						<a class="bigimg_prev" style="display:none;">&lt;</a>
+						<a class="bigimg_next">&gt;</a>
+					</div>
+					<div class="product_selectimg">
+						<!--	<a id="btn_pageLeft" class="left_page_have invisible">左翻页</a>-->
+						<div class="product_smallimg">
+							<ul class="thumbs" style="overflow: hidden; position: absolute; width: 360px;" id="thumbs">
+								<li data-index="0">
+									<a class="selectimg" href="#" title="黑白拼色迷彩双肩包"><img src="img/TWT-444-00001a11.jpg" alt="" class="gwctp11"></a>
+								</li>
+								<li data-index="1">
+									<a class="selectimg" href="#" title="黑白拼色迷彩双肩包"><img src="img/TWT-444-00001u1.jpg" alt="" class="gwctp12"></a>
+								</li>
+								<li data-index="2">
+									<a class="selectimg" href="#" title="黑白拼色迷彩双肩包"><img src="img/TWT-444-00001v1.jpg" alt="" class="gwctp13"></a>
+								</li>
+								<li data-index="3">
+									<a class="selectimg" href="#" title="黑白拼色迷彩双肩包"><img src="img/TWT-444-00001w1.jpg" alt="" class="gwctp14"></a>
+								</li>
+							</ul>
+						</div>
+						<!--<a id="btn_pageRight" class="right_page_have invisible">右翻页</a>-->
+					</div>
+				</div>
+				<!--	大图片旁边这个div-->
+				<div class="product_info " data-spm="2040171">
+					<!--商品信息判断include哪个页面-->
+					<a class="product_share_weibo" id="weibo-share" href="#" target="_blank">分享</a>
+					<div class="product_title">TIM COPPENS</div>
+					<div class="product_name">
+						<h1>不剁手送女友</h1></div>
+					<div class="product_price_box clearfix">
+						<div class="product_price">
+							<!--<span class="product_current_price">￥</span>-->
+							<span class="product_current_price" id="productRMB">1,799</span>
+						</div>
+						<div class="product_original_price">
+							<span>￥</span>
+							<span>5,700</span>
+						</div>
+						<div class="product_discount"><span>3.2</span><span class="unit">折</span></div>
+					</div>
+					<!--促销信息ftl-->
+					<!--促销信息-->
+					<div class="box_effect">
+						<div class="box_effect_content" id="shousuo">
+							<div class="box_effect_content_first" style="width:90%;">
+								<span>全场免运（海外直发商品除外）</span>
+							</div>
+						</div>
+					</div>
+					<!--//促销信息-->
+					<!--颜色与尺寸选择-->
+					<!--颜色与尺寸ftl-->
+					<div class="product_choose product_choose_color clearfix">
+						<div class="product_choose_title">颜色:<strong>黑白拼色</strong><span id="chosColor" style="visibility:hidden;">请选择颜色</span></div>
+						<ul id="product_choose_color_ul" data-spm="2039376">
+							<li>
+								<a id="2042204299000233315" href="#" title="黑白拼色" class="colorselected">
+									<img src="img/TWT-444-00001ayyy.jpg" class="xxxtpyss">
+									<span>黑白拼色</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!--//颜色选择-->
+					<!--尺寸选择-->
+					<!--数量选择-->
+					<div class="product_choose">
+						<div class="product_choose_title">数量</div>
+						<div class="number_choose">
+							<span id="countReduce" class="number_reduce_none" onclick="">-</span>
+							<span class="quantity_number">
+            <input type="text" value="1" id="quantity" readonly="true">
+            </span>
+							<span id="countAdd" class="number_increase" onclick="">+</span>
+						</div>
+						<span class="quantity_explain"></span>
+						<div class="clear"></div>
+					</div>
+					<!--//数量选择-->
+					<!--出库日期-->
+					<div class="product_trace trace_normal">预计出库日期:
+						<span>
+                2016年11月02日
+            </span>
+					</div>
+					<!--//出库日期-->
+					<!--购买按钮-->
+					<div class="product_button">
+						<!--非预览-->
+						<a class="join_shopping_bag" ><span>加入购物袋</span></a>
+
+					</div>
+					<!--//购买按钮-->
+
+					<!--倒计时-->
+					<div class="countdown clearfix">
+						<span class="countdown_label"><strong>限时抢购</strong><em id="countdownStatus">活动剩余</em></span>
+						<div class="countdown_Time" id="spanTimer"><strong><em id="countdownDD">06</em><del></del></strong><span>天</span><strong><em id="countdownHH">22</em><del></del></strong><span>时</span><strong><em id="countdownMM">04</em><del></del></strong><span>分</span><strong><em id="countdownSS">36</em><del></del></strong><span>秒</span></div>
+					</div>
+					<!--//倒计时-->
+					<div class="p_d_after_sale">
+						<span class="real100">官方授权正品</span>
+						<!--此分类支持7天无理由退换货-->
+						<span class="rma7days">7天无理由退货</span>
+					</div>
+				</div>
+
+			</div>
+
+			<!--中间的第三部分-->
+			<div id="centertt3"></div>
+		</div>
+		<div id="ww"></div>
+	</body>
+
+</html>

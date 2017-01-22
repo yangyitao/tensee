@@ -1,0 +1,395 @@
+#gwczqq{
+	
+width: 1000px;
+height: auto;
+position: relative;
+margin: 0 auto;
+text-align: left;
+z-index: 8;
+}
+#xxxxxxxxxxxx {
+min-height: 600px;
+}
+.shoppingbag .cart {
+font-weight: 600;
+border-bottom: 1px solid #ccc;
+margin-bottom: 10px;
+}
+.shoppingbag h2 {
+width: 1000px;
+height: 25px;
+font-size: 24px;
+color: #000;
+border-bottom: 1px solid #000;
+line-height: 25px;
+margin-top: 45px;
+padding-bottom: 10px;
+margin-bottom: 30px;
+}
+.shoppingbag h2.cart span {
+font-size: 14px;
+color: #909090;
+font-weight: 400;
+}
+.shoppingbag h2 span {
+float: right;
+/*font-size: 12px;*/
+line-height: 30px;
+}
+.listTab3 {
+margin-bottom: 0;
+border: 0 none;
+height: 47px;
+line-height: 47px;
+margin-top: 10px;
+}
+.shoppinglistTab {
+width: 1000px;
+/*height: 30px;
+margin-bottom: 20px;*/
+/*border-bottom: 2px solid #000;*/
+position: relative;
+}
+.listTab3 .selectedTab {
+background: #eee;
+color: #000;
+font-weight: bold;
+}
+.listTab3 a {
+height: 48px;
+line-height: 48px;
+width: 164px;
+}
+.listTab3 a{
+text-align: center;
+font-size: 18px;
+float: left;
+
+}
+.shoppingNothing {
+padding: 30px 0;
+}
+.shoppingNothing {
+width: 100%;
+height: auto;
+overflow: hidden;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+/*padding-bottom: 100px;*/
+}
+
+
+
+/*购物车动态刷新后的数据雨样式*/
+ .list_title2 {
+background: #eee;
+height: 58px;
+line-height: 58px;
+border-bottom: 0 none;
+}
+ .list_title {
+width: 100%;
+/*height: 25px;*/
+overflow: hidden;
+/*border-bottom: 2px solid #000;*/
+}
+
+ .list_title ul li.checkAllBox {
+width: 90px;
+border-bottom: 0 none;
+height: 58px;
+line-height: 58px;
+position: relative;
+cursor: pointer;
+}
+ .list_title2 ul li {
+font-size: 16px;
+font-weight: normal;
+}
+ .list_title ul li {
+float: left;
+}
+.checkAll {
+position: absolute;
+top: 50%;
+left: 10px;
+background: url(../img/checkbtn.png) 0 0 no-repeat;
+z-index: 2;
+width: 18px;
+height: 18px;
+cursor: pointer;
+margin-top: -9px;
+display: inline-block;
+text-indent: -9999px;
+}
+
+.checkText {
+float: left;
+font-size: 16px;
+margin: -1px 0 0 38px;
+}
+/*商品信息*/
+ .list_title2 ul .list_name {
+width: 260px;
+font-size: 16px;
+text-align: left;
+padding-left: 50px;
+}
+ .list_title2 ul li {
+height: 58px;
+}
+ .list_title2 ul li {
+font-size: 16px;
+font-weight: normal;
+}
+ .list_title2 ul li {
+height: 58px;
+}
+.list_title2 ul li {
+font-size: 16px;
+font-weight: normal;
+}
+ .list_title ul li {
+float: left;
+width: 110px;
+text-align: center;
+/*font-size: 14px;
+font-weight: bold;
+height: 25px;*/
+}
+.list_title2 ul{
+	margin-top:0px;
+}
+
+
+/*魅力直发*/
+.packageType {
+height: 58px;
+line-height: 58px;
+border-bottom: 1px solid #ccc;
+position: relative;
+}
+.clearfix {
+zoom: 1;
+}
+.packageType h3 {
+float: left;
+font-size: 16px;
+font-weight: bold;
+margin: 0 30px 0 38px;
+display:block;
+}
+
+
+/*下面结算的那个样式*/
+.gwd_main2 {
+padding: 20px 0;
+border-bottom: 0 none;
+margin-bottom: 0;
+}
+.gwd_main {
+width: 100%;
+height: auto;
+padding: 60px 0 30px 0;
+/*border-bottom: 1px solid #e7e7e7;
+margin-bottom: 30px;
+float: left;*/
+}
+/*使用优惠券*/
+.gwd_main_left {
+float: none;
+display:block;
+}
+.gwd_main_left {
+width: auto;
+height: auto;
+overflow: hidden;
+/*float: left;*/
+}
+.button2 {
+	float: left;
+display: block;
+width: 98px;
+height: 23px;
+border: 1px solid #000;
+font-size: 12px;
+color: #000;
+text-align: center;
+line-height: 23px;
+cursor: pointer;
+text-decoration: none;
+font-weight: normal;
+background-color: #fff;
+}
+/*使用优惠券下面一个*/
+.payBox {
+float: none;
+width: 1000px;
+height: 58px;
+background: #eee;
+margin: 20px auto 0;
+display:block;
+}
+.payPlane {
+width: 1000px;
+height: 58px;
+line-height: 58px;
+}
+.clearfix {
+zoom: 1;
+}
+/*已经选多少件那的大div*/
+.payBox .checkAllBox {
+height: 58px;
+line-height: 58px;
+position: relative;
+float: left;
+margin-right: 10px;
+}
+
+/*删除按钮*/
+.gwd_main_right .chkButtonBox {
+width: 200px;
+float: left;
+}
+.payBox .gwd_main_right_div {
+height: 58px;
+line-height: 58px;
+margin-bottom: 0;
+}
+.gwd_main_right .gwd_main_right_div {
+/*width: 470px;
+float: right;*/
+text-align: right;
+font-size: 18px;
+position: relative;
+}
+
+
+
+/*大的结算按钮*/
+.payBox .button3 {
+width: 140px;
+height: 58px;
+line-height: 58px;
+float: right;
+font-size: 20px;
+margin-left: 10px;
+border: 0 none;
+}
+.button3 {
+display: block;
+width: 223px;
+height: 33px;
+border: 1px solid #db2726;
+font-size: 14px;
+color: #fff;
+text-align: center;
+line-height: 33px;
+cursor: pointer;
+background-color: #db2726;
+text-decoration: none;
+font-weight: normal;
+}
+
+
+
+th, td, input {
+font-size: 12px;
+}
+img, input {
+border: 0;
+vertical-align: middle;
+}
+
+
+
+.payBox .gwd_total {
+font-size: 14px;
+}
+/*上面挺好的样式*/
+.checkText span {
+font-size: 14px;
+color: #909090;
+text-align: left;
+margin-left: 10px;
+}
+.checkText span b {
+font-size: 18px;
+color: #dd2828;
+padding: 0 5px;
+}
+.payBox .button4 {
+	background-color: #fff;
+	text-align:center;
+	display:block;
+width: 78px;
+height: 26px;
+border: 1px solid #ccc;
+line-height: 26px;
+margin: 15px 0 0 20px;
+font-size: 14px;
+}
+.payBox .gwd_total span {
+font-size: 20px;
+font-weight: bold;
+}
+.gwd_main_right .gwd_total span {
+color: #db2726;
+}
+
+
+
+
+/*以上已经安排好,下面试着写那个样式,一个购物条的样式*/
+/*#xxxxxxxxxxxx ul{
+	padding-top: 10px;
+	list-style: none;
+	zoom: 1;
+	}
+	
+.list_content_ul{
+	width:1000px;height:128px;border-bottom: 1px solid #eee;overflow: hidden;clear: both; 
+}
+.cart_chk{
+	width: 40px;border-bottom: 0 none;position: relative;padding-bottom: 20px;border-bottom: 1px solid #eee;height: 107px;text-align: center;line-height: 107px;float:left;
+}
+.checkItemrrrrrr{
+	position: absolute;top: 50%;left: 10px;background: url(img/checkbtn.png) 0 0 no-repeat;z-index: 2;width: 18px;height: 18px;cursor: pointer;display: inline-block;text-indent: -9999px;
+}
+.jrtyyyyyy{
+	width: 360px;"><img src="img/a1.jpg" style="float: left;width: 80px;height: 107px;margin: -1px 0 0 -1px;
+}
+.yyyyyyyyyyyy{
+	width:50px;height:100px;float:left;padding-top: 50px;float: left;
+}
+.unit-price{
+	padding-bottom: 20px;border-bottom: 1px solid #eee;float: left;width: 120px;height: 107px;text-align: center;line-height: 107px;position: relative;font-size: 16px;
+}*/
+
+
+
+
+.zuimafandeyangshi{
+	float: left;width: 120px;height: 107px;text-align: center;line-height: 107px;
+	position: relative;
+}
+.chooseBox222222222222222{
+	width: 108px;height: 34px;border: 0 none;line-height: 34px;
+	font-size: 28px;margin-top: 35px;background: url(../img/reduce.gif);
+	width: 34px;height: 34px;border-right: 0 none;border-left: 0 none;
+	background: #eee;text-indent: 0;
+}
+.quantity_numberyyyyyyyyyyyy{
+	width: 40px;height: 34px;padding: 0;
+}
+.kkkkkkkkkkkkkkkkkkkkkkkkkk{
+	width: 40px;height: 38px;line-height: 38px;
+	font-size: 16px;padding-left:20px;
+}
+.number_increase_none22222222222{
+	width: 34px;height: 34px;border-right: 0 none;
+	border-left: 0 none;background: #eee;text-indent: 0;
+	background: url(../img/increase_none.gif);
+}

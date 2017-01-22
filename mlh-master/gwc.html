@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="css/gwc.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/touwei.css">
+	</head>
+	<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript">
+        //   获取cookie数据看是否登录的操作
+			$(function(){
+				
+				console.log("进入了登录chookie判断");
+				var sCookie   = $.cookie('login');
+				if(sCookie=="" || sCookie==undefined){
+					$('#bbbbbbb').html("<h2>用户未登录</h2>");
+					
+					
+				}else{
+					
+					
+					var obj = JSON.parse(sCookie);
+					if(obj.type==true){
+						console.log('登录成功');
+						console.log(obj.type);
+						$('#bbbbbbb').html("<h2>"+ obj.name+"用户:恭喜你登录成功</h2>")
+					}else{
+						$('#bbbbbbb').html("<h2>用户未登录</h2>")
+					}
+					
+					
+				}
+			})
+	</script>
+	<!-- 购物车的加入物品-->
+	<script type="text/javascript">
+		$(function() {
+			//				console.log("已经开始执行");
+			var strCookie = $.cookie("good");
+			console.log("已经开始执行");
+			console.log($.cookie("good"));
+			if (strCookie == undefined || strCookie == "") {
+				console.log("没有购买产品")
+				//				使得字消失
+				$("#tab1").css({
+					"display": "block"
+				});
+			} else {
+
+				//				使得字消失
+
+				$("#tab1").css({
+					"display": "none"
+				});
+				//刷新产品列表
+				var oCookie = JSON.parse(strCookie);
+				console.log(oCookie)
+				$.each(oCookie, function() {
+				//	console.log(oCookie);
+//					上面是原来的		
+//				下面是重新试着写的	包括样式
+				var $ul = $('<ul class="list_content_ul  clearfix" style="width:1000px;height:128px;border-bottom: 1px solid #eee;overflow: hidden;clear: both; "></ul>	');
+//               添加那个圆圆的背景图
+			  $ul.append('<li class="cart_chk" style="width: 40px;border-bottom: 0 none;position: relative;padding-bottom: 20px;border-bottom: 1px solid #eee;height: 107px;text-align: center;line-height: 107px;float:left;"><span class="checkAll checkItem" style="position: absolute;top: 50%;left: 10px;background: url(img/checkbtn.png) 0 0 no-repeat;z-index: 2;width: 18px;height: 18px;cursor: pointer;display: inline-block;text-indent: -9999px;"></span></li>');  
+//			  <!--	         添加       图片-->
+              $ul.append('<li style="width: 360px;"><img src="' + this.data.img + '" style="float: left;width: 80px;height: 107px;margin: -1px 0 0 -1px;"></li><li  class="ttttttttttt"  style="width:50px;height:100px;float:left;padding-top: 50px;float: left;">' + this.title + '</li>');
+   //                    价格
+			  $ul.append('<li class="unit-price" style="padding-bottom: 20px;border-bottom: 1px solid #eee;float: left;width: 120px;height: 107px;text-align: center;line-height: 107px;position: relative;font-size: 16px;">' + this.data.price + '</li>');
+
+			//数量
+			
+//			console.log("ddddddddd"+this.num);
+			$ul.append('<li    class="zuimafandeyangshi" ><div class="number_choose "><span class="number_reduce  chooseBox222222222222222"  >-</span><span class="quantity_numberyyyyyyyyyyyy" ><input readonly="readonly" class="kkkkkkkkkkkkkkkkkkkkkkkkkk" value="' + this.num + '"></span><span class="number_increase_none22222222222"  >+</span></div></li>');
+//               优惠
+				$ul.append('<li class="unit-price" style="float: left;font-size:16px;width: 120px;height: 107px;text-align: center;line-height: 107px;position: relative;">￥0.00</li>');
+				//总价
+				
+				var dd=this.data.price;
+				var price11=parseInt(dd.substring(1,5));
+				//console.log(price11);
+//				console.log(this.data.price,this.num);
+				$ul.append('<li class="amount"style="font-weight: bold;font-size: 16px;width:78px;height:50px;float:left;padding-top:50px;">' + price11*parseInt(this.num) + '</li>');
+				//删除按钮
+				$ul.append('<li  style="display: block;width: 78px;height: 20px;z-index: 99999;float: right;margin-right: 50px;margin-top: 50px;border: 1px solid gray;text-align: center;padding-top:8px;"><div class="list_content_delete deleteBox" >删除</div></li>');
+
+				$('#xxxxxxxxxxxx').append($ul);
+				
+				
+				
+				
+				
+//				给删除按钮寻找到事件 添加删除事件
+				$('.list_content_delete').click(function(){
+					
+					var oldCookie = JSON.parse($.cookie("good"));
+					console.log( typeof (oldCookie));
+//					这个是他的tittile数值    按删除按钮的那个商品的替她透露只
+					var $title=$(this).parents(".list_content_ul").find('.ttttttttttt').html();
+//					console.log($title);
+					$.each(oldCookie, function(index) {
+						if($title==this.title){
+//						oldCookie.split(index,1);
+						oldCookie.splice(index,1);		
+						}
+					});
+					$(this).parent().parent().remove();
+					$.cookie("good",JSON.stringify(oldCookie),{expires:7 , path:"/"}),
+					console.log($.cookie("good"));
+					
+				  })
+				});
+			}
+	//这是收起来的div	
+		})
+	</script>
+	<!--	引入头尾-->
+	<script type="text/javascript">
+		$(function() {
+			//  	引入头尾
+			$('#gwctqq').load("gwctb.html", function() {
+					//console.log('wangc');
+				})
+				//			yuanlaidemima引入尾巴
+			$('#gwcwqq').load("gwcwb.html", function() {
+				//console.log('wangc');
+			})
+		});
+	</script>
+
+	<body>
+		<!--	购物车头-->
+		<div id="gwctqq"></div>
+		<!--	购物车中-->
+		<div id="gwczqq" class="content_container shoppingbag">
+			<!--<div class="content_container shoppingbag">-->
+			<!--	这是购物车里面几段文字-->
+			<div id="bagContent">
+				<h2 class="cart">
+        <span>商品库存有限，建议尽快提交订单，闪购到心仪的商品；促销优惠将按比例分摊至商品中。</span>
+				        	购物袋
+				        </h2>
+
+				<!--全场优惠-->
+				<div id="globalPromotion"></div>
+
+				<div class="shoppinglistTab listTab3" data-spm="2028495">
+					<a class="selectedTab">在售</a>
+					<a>心愿单</a>
+
+					<a>已失效</a>
+
+				</div>
+
+				<!--购物袋商品列表-->
+				<div id="tab1" class="shoppingCartContent" style="display: block">
+					<p class="shoppingNothing">您还没有可购买的商品，赶快将心仪的商品加入购物袋吧~</p>
+
+				</div>
+
+				<!--心愿单列表-->
+				<div id="tab2" class="shoppingCartContent clearfix" style="display: none;">
+					<div class="shoppinglist">
+						<p class="shoppingNothing">即将上新的商品可以加入心愿单啦！抢购快人一步，赶快行动吧~</p>
+					</div>
+
+					<div id="qty_explain">
+						<span class="explainPanel">商品库存不足</span>
+					</div>
+					<div id="wishPopup">
+						<div class="close3_btn">关闭</div>
+						<div class="tipsInfo"></div>
+						<div class="popBtn clearfix">
+							<a class="wish_deleteAll">确定</a>
+							<a class="cancelBtn">再想想</a>
+						</div>
+					</div>
+				</div>
+
+				<!--已失效列表-->
+				<div id="tab3" class="shoppingCartContent clearfix" style="display: none;">
+					<div class="shoppinglist">
+						<p class="shoppingNothing">活动结束的商品会显示在此</p>
+					</div>
+				</div>
+			</div>
+			<!--</div>-->
+			<!--       购物车里面是否全选的操作-->
+			<div class="list_title list_title2">
+				<ul>
+					<li class="checkAllBox">
+						<span class="checkAll"></span><span class="checkText">全选</span>
+					</li>
+					<li class="list_name">商品信息</li>
+					<li>单价</li>
+					<li>数量</li>
+					<li>优惠</li>
+					<li>小计</li>
+					<li>操作</li>
+				</ul>
+			</div>
+			<!--	         魅力直发-->
+			<div class="packageType clearfix">
+				<span class="checkAll"></span>
+				<h3>魅力惠直发</h3>
+
+			</div>
+			<!--   可以在下面加入东西了-->
+			<div id="xxxxxxxxxxxx">
+					<!--试一试写的ul一个购物车样式-->
+					
+					
+					
+				<!--<ul class="list_content_ul  clearfix" style="width:1000px;height:128px;border-bottom: 1px solid #eee;overflow: hidden;clear: both; ">-->
+					<!--那个圆圆背景图   -->
+					<!--<li class="cart_chk" style="width: 40px;border-bottom: 0 none;position: relative;padding-bottom: 20px;border-bottom: 1px solid #eee;height: 107px;text-align: center;line-height: 107px;float:left;">
+		                    <span class="checkAll checkItem"style="position: absolute;top: 50%;left: 10px;background: url(img/checkbtn.png) 0 0 no-repeat;z-index: 2;width: 18px;height: 18px;cursor: pointer;display: inline-block;text-indent: -9999px;"></span>
+	                </li>-->
+	            
+                 <!--	                图片  -->
+                   
+                   <!--<li style="width: 360px;"><img src="img/a1.jpg" style="float: left;width: 80px;height: 107px;margin: -1px 0 0 -1px;"></li>
+               <li style="width:50px;height:100px;float:left;padding-top: 50px;float: left;">商品1</li>-->
+                   <!--        价格 -->
+					<!--<li class="unit-price" style="padding-bottom: 20px;border-bottom: 1px solid #eee;float: left;width: 120px;height: 107px;text-align: center;line-height: 107px;position: relative;font-size: 16px;">
+									￥730.00
+					</li>-->
+					<!--数量-->
+					<!--<li style="float: left;width: 120px;height: 107px;text-align: center;line-height: 107px;position: relative;">
+									<div class="number_choose chooseBox">
+											<span class="number_reduce" onclick="reduceCountV3('3025015200000472636','','1','5') style="width: 108px;height: 34px;border: 0 none;line-height: 34px;font-size: 28px;margin-top: 35px;background: url(img/reduce.gif);width: 34px;height: 34px;border-right: 0 none;border-left: 0 none;background: #eee;text-indent: 0;">-</span>
+										<span class="quantity_number" style="width: 40px;height: 34px;padding: 0;"><input readonly="readonly" value="5"style="width: 40px;height: 38px;line-height: 38px;font-size: 16px;padding-left:20px;"></span>
+										
+										<span class="number_increase_none" onclick="addCountV3('3025015200000472636','','5','5') " style="width: 34px;height: 34px;border-right: 0 none;border-left: 0 none;background: #eee;text-indent: 0;">+</span>
+									</div>
+									
+							</li>-->
+			<!--	优惠  -->
+					<!--<li class="unit-price" style="float: left;font-size:16px;width: 120px;height: 107px;text-align: center;line-height: 107px;position: relative;">
+										￥0.00
+					</li>-->
+				<!--	价格 -->
+					<!--<li class="amount"style="font-weight: bold;font-size: 16px;width:78px;height:50px;float:left;padding-top:50px;">
+								￥3,650.00
+					</li>-->
+		<!--			删除按钮   -->
+		              
+					<!--<li  style="display: block;width: 78px;height: 20px;z-index: 99999;float: right;margin-right: 50px;margin-top: 50px;border: 1px solid gray;text-align: center;padding-top:8px;">
+						<div class="list_content_delete deleteBox" onclick="confirmDel(this)" style="">删除</div>
+					</li>
+				</ul>
+				-->
+				
+				
+				
+				
+				
+				
+				
+	<!--		加入购物东西的ul  -->
+				        <!--<ul id="zzul">
+				        	<li ></li>
+				        </ul>
+				-->
+				
+		<!--		购物车下面写东西的收起的div-->
+			</div>
+			
+			
+			
+			
+			
+			<!--       以下是结算的那个东西-->
+			<div class="gwd_main gwd_main2">
+				<!-- 优惠使用信息 -->
+				<div class="gwd_main_left">
+
+					<!--优惠券初始状态-->
+					<span class="button2" id="btn_useCoupon">使用优惠券</span>
+					<!--已使用优惠券-->
+
+					<div id="usedCouponDiv" style="display: none;">
+						<p>已应用优惠券： &nbsp;&nbsp;&nbsp;
+							<span class="red">-￥0.00</span>
+						</p>
+						<span class="button2" id="btn_cancelCoupon">取消优惠券</span>
+					</div>
+
+					<!--使用优惠券-->
+					<div class="tab1" id="useCouponDiv" style="display: none">
+						<div class="tab_nav">
+							<span class="tab_button_checked">选择优惠券</span>
+							<span class="tab_button">输入优惠券</span>
+						</div>
+						<div class="tab_div" style=" height: auto">
+							<div class="tab_list">
+								<div class="tab_list_right">
+
+									<p class="red">可使用</p>
+								</div>
+								<input name="selectCoupon" type="radio" value="2066010400000502589">
+								<li>NMFS8g58we
+								</li>
+								<li>新用户大礼包，您成功注册，获得全场购物免运费的优惠劵（有效期10天）
+								</li>
+							</div>
+							<div class="tab_list">
+								<div class="tab_list_right">
+									<p>80.0元</p>
+
+									<p>不可用</p>
+								</div>
+								<input name="" type="radio" disabled="disabled">
+								<li>nm11vxn4nw
+								</li>
+								<li>【新人80元优惠券】购全场任意商品（海外直发商品除外），满480元立减80元，随券免运，使用期限：11/11-11/13
+								</li>
+							</div>
+							<p class="juli red select" style="display: none;"><span>请选择可用的优惠券！</span></p>
+							<p>&nbsp;&nbsp;&nbsp;</p>
+							<p class="margin">
+								<span class="button1" onclick="submitCouponV3(this);">提交</span>
+								<span onclick="cancelCouponListeners();" class="button2">取消使用</span>
+							</p>
+						</div>
+
+						<div class="tab_div" style="display: none; height: auto">
+							<p>请输入您获得的优惠券代码：</p>
+							<p><input id="inputCoupon" name="" type="text"></p>
+							<p class="juli red in" style="display: none;"><span>很抱歉，优惠券无法使用，请确认是否满足使用条件</span></p>
+							<p><span class="button1" onclick="submitCouponV3(this);">提交</span><span onclick="cancelCouponListeners();" class="button2">取消使用</span></p>
+						</div>
+					</div>
+				</div>
+
+				<form id="from1" action="" method="post">
+					<input type="hidden" id="productIds" name="productIds">
+				</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="gwd_main_right payBox">
+					<div class="payPlane clearfix">
+						<div class="checkAllBox">
+							<span class="checkAll"></span>
+							<p class="checkText">
+								全选<span>已选<b id="checkedNum">1</b>件</span>
+							</p>
+						</div>
+
+						<div class="gwd_main_right_div chkButtonBox" data-spm="2028497">
+							<div class="pop_up_box box3" style="display: none" id="bagStatus" status=""></div>
+							<span class="button4" id="deleteItem">删除</span>
+						</div>
+
+						<span class="button3" onclick="bagToSettleV3(this);">结算</span>
+						<input id="bagshopingAmount" type="hidden" value="￥3,650.00">
+
+						<div class="gwd_main_right_div gwd_total">
+							<div class="price_sum">总价（已免运费）：<span>￥3,650.00</span></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--           下面一个、div是中间这个部分的收尾-->
+		</div>
+		<!--	购物车尾巴-->
+		<div id="gwcwqq"></div>
+	</body>
+<script>
+		//获取总的价格放在价格表里面
+//		var dd=this.num;
+$(function(){
+	$
+		$("#checkedNum").html();
+});
+      
+</script>
+</html>

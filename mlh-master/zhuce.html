@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/zhuce.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/touwei.css">
+	<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>、
+	<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+
+<!--注册页面的cookie-->
+<script type="text/javascript">
+			$(function(){
+				$("#submitBtn").click(function(){
+					
+					//对输入的用户信息进行判断
+					if($('#userAccount').val()!="" && $('#userAccount2').val()!=""){
+						
+						
+						//生成新的用户对象
+						var newSuer = {user:$('#userAccount').val(),psw:$('#userAccount2').val()};
+						
+						//获取cookie里面的用户信息
+						var sCookie = $.cookie('user');
+						if(sCookie==undefined || sCookie==""){
+							
+							//如果cookie里的用户信息为空的时候
+							
+							//生成新的用户信息数组
+							var aCookie = [];
+							aCookie.push(newSuer);
+						}else{
+							//如果不为空的时候
+							
+							//提取cookie里的用户信息
+							var aCookie = JSON.parse(sCookie);
+							
+							
+							//遍历查看是否已经注册
+							var bRrg = false //默认未注册
+							$.each(aCookie,function(){
+								if(this.user==$('#userAccount').val()){
+									bRrg=true;
+								}
+							})
+							
+							
+							//为真时表示用户已注册
+							if(bRrg){
+								console.log("用户已注册")
+								alert("用户已注册");
+								window.location.href ='denglu.html';
+
+							}else{
+								//在用户信息数组中添加新的用户
+								aCookie.push(newSuer);
+								alert("注册成功，然后去登录吧么么达！");
+								window.location.href ='denglu.html';
+
+							}
+
+						}
+					}
+					//将更新后的用户信息数组存入cookie
+					$.cookie('user',JSON.stringify(aCookie),{expires:7 , path:"/"});
+					
+					console.log($.cookie('user'));
+				})
+			})
+		</script>
+	</head>
+	<body>
+	<div class="dlymz">
+		<div class="dlymt">
+			
+		</div>
+		<div class="dlymzj">
+			<div class="dlymzjlr">
+				
+				   <!--  前面两行字-->
+           
+				<div class="hydl_regsiter11" data-spm="2028696">
+                    <h2>免费注册</h2>
+                    <span class="iiiii">已注册？<a href="denglu.html">登录</a></span>
+                </div>
+                
+                 <!--  3个登录方框密码输入登录之前几个红色字体-->
+                <p id="yttt">新客专享&nbsp;送女朋友一枚&nbsp;+&nbsp;2次免运&nbsp;&nbsp;开心不开心</p>
+              <!--  3个登录方框密码输入登录-->
+                <div class="sgfko">
+               
+                  <ul>
+                  	   <!--  登录名输入登录方框-->
+                         <li><span>账户名:</span>
+                         	<input id="userAccount" name="userAccount" type="text" value="手机号/邮箱" class="input-text" onclick="zhanghu()">
+                       
+                        	<p id="Act_error" class="error"></p>
+                        </li>  
+                         <!--  登录密码输入登录方框-->
+                        <li id="mmaaaay"><span>密码:</span>
+                        	<!--type="password"-->
+                        	<input name="passWord"  id="userAccount2"  onclink="mima()"   value="请输入6到20个字符，不然宝宝不给你登录">
+                        	<p id="Pwd_error"></p>
+                        	<!--<p id="lockInfo" class="hidstyle">出于安全考虑，系统已冻结您的账户，请联系客服：<a onclick="#" title="在线咨询" class="buybtn" style="cursor:pointer;">在线咨询</a>或400-664-6698</p>-->
+                             <p id="lowPwd" style="display: none;">密码较弱，建议设置多种字符组成的复杂密码</p>
+                             <div class="login_safety showstyle" id="lowMHight">
+					                    <span id="low" style="background-color:  rgb(146, 146, 146);">低</span>
+					                    <span id="middle" style="background-color: rgb(146, 146, 146);">中</span>
+					                    <span id="height" style="background-color: rgb(146, 146, 146);">高</span>
+                             </div>
+                             
+                             
+                            
+                        </li>
+                          <!--确认密码-->
+                         <li class="lllllllll"><span>确认密码:</span><input style="width:253px;" id="qrmmll"  name="rpassWord" type="password" onblur="checkFormInfo('regist','no','','','rpwd')" maxlength="20">
+					                	<p id="RPwd_error"></p>
+					                	<p id="switch_error"></p>
+                        </li>
+                        <!--         短信验证码-->
+                        <li id="rdm_tel" class="showstyle"><span>短信验证码:</span><input class="yanzheng" onkeyup="value=value.replace(/[^\w/]/ig,'')" id="validateCode" name="random1" maxlength="5" type="text" >
+					                <a style="cursor: pointer;" onclick="" class="sendRandm" data-spm-anchor-id="a2o1p.8153033.0.0"><img id="sendRandm" src="img/img_03.png"></a>
+					                <a style="cursor: pointer;" onclick="" class="rsendRandm hidstyle"><img id="rsendRandm" src="img/img_04.png"></a>
+					                <div class="ma hidstyle"><b class="times">60</b>秒后重新获取验证码</div>
+					                	<p class="Rdm_error" id="Rdm_error"></p>
+                        </li>
+                  <!--      按钮-->
+                        <div class="hydl_btn22">
+                	         <a id="submitBtn"   style="cursor: pointer;">用户注册</a>
+                        </div>
+                        
+                          <div class="sjzc_login">
+					    	<p data-spm="2028709">点击立即注册即表示同意魅力惠<a href="#"><span>使用条款</span></a>
+					    	</p>
+					    	<p><span id="chooseRemind"  class="selected chengepst" >复选框</span>您将收到魅力惠每日最新上线邮件</p>
+					    </div>
+                </ul>
+                
+                       
+                 <!--  登录联名登录下面的东西    二维码等-->
+                 <div class="xian"></div>
+                <div class="erweima">
+                    <img src="img/imges_saomiao.jpg">
+                  <p>扫描二维码或发送短信<br>“MLH”到“12114”<br>下载APP尊享独家优惠</p>
+                </div>
+                
+                
+                
+                </div>
+			</div>
+			
+		</div>
+		
+		
+		  <!--尾巴 -->   
+	<div id="foot"></div>
+	</div>
+	</body>
+	
+	<script>
+
+		$(function(){
+//			对于文本框获取焦点的改变样式操作
+			$(".input-text").bind({
+				focus:function(){
+					if (this.value == this.defaultValue) {
+						this.value="";
+					}
+				},
+				blur:function(){
+					if (this.value == "") {
+						this.value=this.defaultValue;
+					}
+				}
+			})
+			
+			
+			
+			
+			
+			$("#userAccount2").bind({
+				focus:function(){
+					if (this.value == this.defaultValue) {
+						this.value="";
+					}
+				},
+				blur:function(){
+					if (this.value == "") {
+						this.value=this.defaultValue;
+					}
+				}
+			})
+//			登录页面的登录小方格子切换   为什么不打印？为什么没有进入这条语句
+
+			$("#chooseRemind").click(function(){
+//             alert("累死宝宝");
+
+//				console.log("hhhhhhhhhhh");
+			
+				$(".selected").toggleClass("yy");
+//					$(".selected").toggleClass('selected');
+			});
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				//尾巴
+				$('#foot').load("footdl.html",function(){
+					//console.log('wangc');
+				})
+
+				
+				
+				
+				
+		});
+	</script>
+	
+	
+	<!--登录用户名验证-->
+	<script>
+
+	function zhanghu(){
+//	验证登录框的帐号是否正确
+	var oPhone = document.getElementById("userAccount");
+var Act_error = document.getElementById("Act_error");
+	oPhone.onblur = function(){
+		
+
+		var str = oPhone.value;
+
+		var reg = /^1[35678]\d{9}$/;
+		var reg1 = /\w+@[a-zA-Z0-9]+\.[a-zA-Z]+/;
+
+		var aa = reg.test(str);
+	  var aa1 = reg1.test(str);
+	  
+	  
+	 	
+
+		if(aa == false&&aa1 == false){
+             
+	       //console.log(str);
+			if(str==="已验证手机号/邮箱"){
+//				alert("你输入的东西是空的傻蛋");
+				Act_error.innerHTML="你输入的东西是空的傻蛋";
+			}else{
+//				alert("你输入的不是空的是错的");
+				Act_error.innerHTML="你输入是错的，别想骗我哦眼神好着捏";
+			}
+//			alert("请输入正确的手机号码或请输入正确邮箱地址才可以作为账户名称哦么么达")
+		}else {
+//			console.log("你输入的是正确的");
+			Act_error.innerHTML="你输入的东西是正确的";
+		}
+
+	       }
+		}
+		
+	</script>
+	<!--验证登录框密码是否正确-->
+	
+<script>
+
+//	验证登录框的密码是否正确
+  var oPhone11 = document.getElementById("userAccount2");
+    var Act_error11 = document.getElementById("Pwd_error");
+	oPhone11.onblur = function(){
+		var str11 = oPhone11.value;
+
+			var reg11 = /^\w{6,20}$/;
+
+			var pass11 = reg11.test(str11);
+
+			if(pass11 == false){
+
+//				alert("密码输入不对");
+				Act_error11.innerHTML="密码输入不对";
+				
+			}else{
+//				alert("密码正确");
+				Act_error11.innerHTML="密码输入正确";
+			}	
+			
+	//			验证他的密码安全性
+		//		//安全验证可以参考
+////	var oyanz = document.getElementById("yanz")
+////	
+////	var str = oPasswodr2.value;
+//// id="low" style="background-color: rgb(0, 0, 0)
+////
+//var low = document.getElementById("low");
+//	if(str11.length >= 8){
+////		改变那个条条的样式
+//	      }
+//	6-10-15-20	rgb(146, 146, 146);			
+	var low = document.getElementById("low");	
+	var middle = document.getElementById("middle");	
+	var height = document.getElementById("height");	
+//	低
+			if(str11.length >= 6 && str11.length<10){
+				//		改变那个条条的样式
+			low.style.backgroundColor="rgb(0, 0, 0)";	
+				middle.style.backgroundColor="rgb(146, 146, 146)";	
+					height.style.backgroundColor="rgb(146, 146, 146)";	
+					Act_error11.innerHTML="密码输入正确，不过安全性太low,建议改一改";
+           }else if(str11.length >= 10 && str11.length<15){
+           	low.style.backgroundColor="rgb(146, 146, 146)";	
+				middle.style.backgroundColor="rgb(0, 0, 0)";	
+					height.style.backgroundColor="rgb(146, 146, 146)";	
+           }else if(str11.length >= 15 && str11.length<=20){
+           	low.style.backgroundColor="rgb(146, 146, 146)";	
+				middle.style.backgroundColor="rgb(146, 146, 146)";	
+					height.style.backgroundColor="rgb(0, 0, 0)";	
+           }
+			
+			
+			
+			
+			
+
+   }
+		
+	</script>
+		<!--验证确认密码是否一样                          还有那个安全度（密码的安全度）-->
+	<script>
+		//			对于确认密码的判断	
+//可以做参考
+////密码长度验证
+//	oPasswodr2.onblur = function(){
+//		
+//			if(oPassword.value !== oPasswodr2.value ) {
+//
+//				alert("密码长度不一样")
+//			}
+//	}
+
+ var yuanlaidemima = document.getElementById("userAccount2");
+var qrmmsfzq=document.getElementById("qrmmll");
+var RPwd_error=document.getElementById("RPwd_error");
+ qrmmsfzq.onblur=function(){
+ 
+			if(qrmmsfzq.value !== yuanlaidemima.value ) {
+                 RPwd_error.innerHTML="密码不对啊，不要以为宝宝天真就骗我";
+//				alert("密码不对啊，不要以为宝宝天真就骗我")
+			}else{
+				    RPwd_error.innerHTML="密码对了，宝宝没有看错人！赞！";
+//				alert("密码对了，宝宝没有看错人！赞！")
+			}
+	}
+ 
+ 
+//  还有那个安全度（密码的安全度）验证的是输入注册密码
+ 
+ 
+	</script>
+</html>

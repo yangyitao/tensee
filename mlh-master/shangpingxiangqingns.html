@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表页</title>
+	<link rel="stylesheet" type="text/css" href="css/lbt.css">
+    <link rel="stylesheet" type="text/css" href="css/xmxlbt.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/touwei.css">
+	<link rel="stylesheet" type="text/css" href="css/center.css">
+	<link rel="stylesheet" type="text/css" href="css/spxqyzj.css">
+	<script type="text/javascript" src="js/day19-move.js" ></script>
+	<script type="text/javascript" src="js/lbt.js" ></script>
+    <script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+//   获取cookie数据看是否登录的操作
+			$(function(){
+				
+				
+				var sCookie   = $.cookie('login');
+				if(sCookie=="" || sCookie==undefined){
+					$('#bbbbbbb').html("<h2>用户未登录</h2>");
+					
+					
+				}else{
+					
+					
+					var obj = JSON.parse(sCookie);
+					if(obj.type==true){
+						console.log('登录成功');
+						console.log(obj.type);
+						$('#bbbbbbb').html("<h2>"+ obj.name+"用户:恭喜你登录成功</h2>")
+					}else{
+						$('#bbbbbbb').html("<h2>用户未登录</h2>")
+					}
+					
+					
+				}
+			})
+	</script>
+	<!--引入首页一样的头部和尾部文件 和那个和首页不一样的中间-->
+	<script>
+		$(function(){
+				
+		//头部和那个首页头尾是一样的可以引入
+				$('#heard').load("heard.html",function(){
+					
+//					改变一下头部的样式吧么么达
+//                  改变的那个   女士字体颜色
+					$("#2013000100000000008").css("color","white");
+					$("#2013000100000000001").css("color","red");
+					//console.log('wangc');
+				})
+				//商品详情页的中间
+				$('#center1').load("spxqyzj.html",function(){
+					//console.log('wangc');
+					
+					
+					
+					
+					
+							
+//						做后面小图片的遮罩
+                        $('.zhezhaohhhhhh').mouseenter(function(){
+							
+							console.log('enter');
+//							console.log(this);
+//							console.log('ddd');
+		
+		        $(this).find('.zhezhaohoumian').show();
+		         $(this).find('.zhrezhaohmtw').show();
+		             
+//							$(".zhezhaohoumian").show();
+//							
+//							$(".zhrezhaohmtw").show();
+//							$(this).find('div').show();
+						})
+						
+						
+						
+						$('.zhezhaohhhhhh').mouseleave(function(){
+							console.log('leaver');
+//							$(this).css({
+//								width:"-=20px",
+//								height:"-=20px",
+//								top:"+=10px",
+//								left:"+=10px"
+//							});\
+                             $(".zhezhaohoumian").hide();
+                             	$(".zhrezhaohmtw").hide();
+//							$(this).find('a').hide();
+//							$(this).find('div').hide();
+						})
+					
+					
+					
+//					监听事件使得那个什么那个导航条一直悬浮这个是仿佛放在中间不要弄错了
+		
+					//监听滚动事件
+					$(window).scroll(function(){
+
+	                     if ($(window).scrollTop()>=110) {
+							$("#navBarId").css("position","fixed");
+							$("#navBarId").css("background-color","#000");
+							$("#navBarId").css("width","100%");
+//							background-color: #000;
+							$("#navBarId").css("top","0");
+							
+							
+							
+							$("#shangpxiangqiyezj").css("margin-top", "250px");
+						}else {
+							$("#navBarId").css("position","relative");
+//							$("#navBarId").css("top","400px");
+							
+							$("#shangpxiangqiyezj").css("margin-top","430px");
+				         }
+						
+						
+					})
+					
+					
+									
+				//做那个什么额叫做商品详情页中间那个动态效果
+												///首页面小图片动效变大
+						
+						
+//					console.log($('#img11'));
+						
+						$('.baozhu').mouseenter(function(){
+							
+//							console.log('enter');
+//							console.log(this);
+//							console.log('ddd');
+							$(this).find('img').finish().animate({
+								width:"+=20px",
+								height:"+=20px",
+								top:"-=10px",
+								left:"-=10px"
+							},500);
+							
+							$(this).find('a').show();
+							$(this).find('div').show();
+						})
+						
+						
+						
+						$('.baozhu').mouseleave(function(){
+//							console.log('leaver');
+//							$(this).css({
+//								width:"-=20px",
+//								height:"-=20px",
+//								top:"+=10px",
+//								left:"+=10px"
+//							});\
+							$(this).find('img').finish().animate({
+								width:"-=20px",
+								height:"-=20px",
+								top:"+=10px",
+								left:"+=10px"
+							},500)
+							$(this).find('a').hide();
+							$(this).find('div').hide();
+						})
+						
+					
+					
+					
+					//中间引入文件的的尾巴
+					
+				})
+				
+				
+				
+				
+
+						
+						
+						
+				
+				
+				
+				
+				
+				
+				
+		//尾巴上面一个引入文件：活动即将开始
+//				$('#footsm11').load("footsm.html",function(){
+//  				console.log('wangc');
+//			    });			
+				
+		//尾巴
+				$('#foot').load("foot.html",function(){
+					//console.log('wangc');
+				})
+				
+		});
+	</script>
+	</head>
+	
+	<body>
+			<!--头部-->
+	<div id="heard"></div>
+	<!--轮播图-->
+	<div id="box">
+			<ul id="list">
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<li><img src="img/4.jpg" /></li>
+			</ul>
+			
+		
+	      
+			<div id="left"></div>
+			<div id="right"></div>
+		</div>
+
+		  <!--商品详情页的中间 -->   
+	<div id="center1"></div>
+		 <!--尾巴s上面的div活动即将开始 -->   
+	<!--<div id="footsm11"></div>-->
+      <!--尾巴 -->   
+	<div id="foot"></div>
+	<!--用户登录的的提示是否登录成功-->
+	<div id="bbbbbbb" ></div>
+
+		
+	</body>
+	
+	
+	
+	<!--做点击效果跳转页面的操作-->
+	<!--<script>
+		$(function(){
+			$("#2013000100000000008").click(function(){
+//		js   	window.location.href ='shouye.html';
+			});
+		});
+	</script>-->
+	
+	<!--<script>
+		$(function(){
+			$(".baozhu .text p").click(function(){
+console.log(跳转啦);
+				window.location.href ="ajaxzdxqb.html";
+			});
+		});
+	</script>-->
+</html>
